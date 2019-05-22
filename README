@@ -1,0 +1,14 @@
+VIDEO:
+
+
+    the program requires a "video" or graphics header that includes the following functions:
+    void initialize_video(width, height) :
+        create drawable surface with given dimensions
+    void start_drawing() :
+        begin draw cycle
+    void clear_drawing(int R, int G, int B):
+        clear drawing surface to (R, G, B) color
+    void end_drawing() :
+        finish draw cycle
+    void draw_pixel(int x, int y, int R, int G, int B):
+        draw a pixel at (x, y) with color (R G B)
