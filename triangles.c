@@ -4,6 +4,7 @@
 #include <stdlib.h>
 
 #include "vectors.c"
+#include "lines.c"
 
 
 typedef struct{
@@ -34,5 +35,11 @@ Vector * triangle_normal(Triangle * t){
     Vector * p2 = subtract_vector(t->v3, t->v2);
     return cross_product(p1, p2);
 }
+
+//Vector * triangle_line_intersection(Triangle * triangle, Line * line){
+//    
+//}
+
+
 
 #endif

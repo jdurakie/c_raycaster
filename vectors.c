@@ -27,6 +27,14 @@ double vector_magnitude(Vector *v){
     return sqrt(inner);
 }
 
+Vector * add_vector(Vector *v1, Vector *v2){
+    double x = v1->x + v2->x;
+    double y = v1->y + v2->y;
+    double z = v1->z + v2->z;
+    
+    return make_vector(x, y, z);
+}
+
 Vector * subtract_vector(Vector *v1, Vector *v2){
     double x = v1->x - v2->x;
     double y = v1->y - v2->y;
@@ -51,8 +59,19 @@ Vector * cross_product(Vector * v1, Vector * v2){
     return make_vector(x, y, z);
 }
 
-Vector * dot_product(Vector * v1, Vector * v2){
+double dot_product(Vector * v1, Vector * v2){
+    return (v1->x * v2->x) + 
+           (v1->y * v2->y) + 
+           (v1->z * v2->z);
+}
+
+Vector * multiply_vector_by_scalar(Vector * v, double s){
+    Vector * out_v = make_vector(v->x, v->y, v->z);
+    out_v->x = out_v->x * s;
+    out_v->y = out_v->y * s;
+    out_v->z = out_v->z * s;
     
+    return out_v;
 }
 
 #endif
