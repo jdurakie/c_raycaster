@@ -3,26 +3,37 @@
 
 #include <unistd.h>
 
-#include "vectors.c"
+#include "triangles.c"
 #include "video.c"
+#include "lines.c"
 
 int main(){
-    Vector v1;
-    v1.x = 2;
-    v1.y = 2;
-    v1.z = 2;
-
-    print_vector(&v1);
-
-    printf("%f\n", magnitude(&v1));
-
-    initialize_video(800, 600);
-    for(int i =0; i < 100; i++){
-        int location = (int)time(NULL) % 800;
-        draw_pixel(location, 100, 0, 0, 0);
-        printf("Drew a pixel!");
+    // Random math tests
+    Vector * v1 = make_vector(2, 2, 2);
+    print_vector(v1);
+    Vector * v2 = make_vector(2, 3, 2);
+    Vector * v3 = make_vector(3, 2, 2);
+    Triangle * t = make_triangle(v1, v2, v3);
+    print_triangle(t);
+    Vector * r = subtract_vector(v3, v1);
+    print_vector(r);
+    printf("Normal : ");
+    Vector * normal = triangle_normal(t);
+    print_vector(normal);
+    Line * l = make_line(v1, v2);
+    print_line(l);
+    printf("Vectorized line : ");
+    Vector * vectorized = vectorize_line(l);
+    print_vector(vectorized);
+    
+    // Video test
+    initialize_video(1000, 1000);
+    for(int j = 0; j < 3; j++){
+        for(int i =100; i < 200; i++){
+            draw_pixel(i, j, 0, 0, 0);
+        }
+        flip();
+        sleep(1);
     }
-    flip();
-    sleep(10);
     exit_video();
 }
