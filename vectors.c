@@ -24,9 +24,6 @@ void print_vector(Vector* v){
 
 double vector_magnitude(Vector *v){
     double inner = (v->x * v->x) + (v->y * v->y) + (v->z * v->z);
-    printf("Magnitude of vector : ");
-    print_vector(v);
-    printf("is : %f\n", sqrt(inner));
     return sqrt(inner);
 }
 
